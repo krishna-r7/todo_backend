@@ -1,19 +1,18 @@
 const jwt = require('jsonwebtoken');
 
-const roleBasedRoutes = [
-
-];
-
-
 
 
 exports.verifyToken = (req, res, next) => {
+
   const publicPaths = [
+    '/todo/getTodos',
+    '/todo/createTodo',
 
   ];
 
   const dynamicPublicPaths = [
-    
+    '/todo/updateTodo/:id',
+    '/todo/deleteTodo/:id',
   ];
 
 

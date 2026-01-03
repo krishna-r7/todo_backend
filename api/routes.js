@@ -1,9 +1,9 @@
 const express = require("express");
-const userRoutes = require("./base/base.routes");
+const baseRoutes = require("./base/base.routes");
 
 const router = express.Router();
 
-router.use("/base/user", userRoutes);
+router.use("/todo", baseRoutes);
 
 
 

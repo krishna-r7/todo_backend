@@ -1,14 +1,14 @@
-// AuthRoutes.js
 const express = require("express");
-const { BudgetController} = require("../budget/budget.controller");
+const { BaseController} = require("../base/base.controller");
 const router = express.Router();
 
-const budgetController = new BudgetController();
+const baseController = new BaseController();
 
-router.post("/set", budgetController.setBudget);
-router.get("/get/:userId", budgetController.getBudgets);
-router.delete("/delete/:budgetId", budgetController.deleteBudget);
-router.put("/update/:budgetId", budgetController.updateBudget);
+router.post("/createTodo", baseController.createTodo);
+router.get("/getTodos", baseController.getTodos);
+router.put("/updateTodo/:id", baseController.updateTodo);
+router.delete("/deleteTodo/:id", baseController.deleteTodo);
+
 
 
 module.exports = router;

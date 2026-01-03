@@ -36,11 +36,7 @@ app.get("/health", (req, res) => {
   });
 });
 
-
-
-app.use(verifyToken);
-
-
+// app.use(verifyToken);
 app.use("/api", routes);
 
 
