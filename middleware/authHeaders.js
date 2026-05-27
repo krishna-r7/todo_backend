@@ -5,14 +5,16 @@ const jwt = require('jsonwebtoken');
 exports.verifyToken = (req, res, next) => {
 
   const publicPaths = [
-    '/todo/getTodos',
-    '/todo/createTodo',
+    '/api/auth/login',
+    '/api/auth/signup',
+    // '/api/todo/getTodos'
 
   ];
 
   const dynamicPublicPaths = [
-    '/todo/updateTodo/:id',
-    '/todo/deleteTodo/:id',
+    // '/api/todo/getTodos/:id'
+    // '/todo/updateTodo/:id',
+    // '/todo/deleteTodo/:id',
   ];
 
 
@@ -37,7 +39,7 @@ exports.verifyToken = (req, res, next) => {
     try {
       const decoded = jwt.verify(token, process.env.JWT_SECRET);
       req.user = decoded; // Store decoded token in req.user
-      // console.log(req.user,'user')
+      // console.log(req.user,'userss')
       next();
     } catch (error) {
       return res.status(707).json({ message: 'Invalid or expired token', status_code: 707, data: null });

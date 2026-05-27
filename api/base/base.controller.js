@@ -9,10 +9,14 @@ class BaseController {
     try {
       const { title, description, status } = req.body;
       if (!title) return res.status(400).json({ message: "Title is required" });
+      const userid = req.user.userId;
+
+      // console.log(user,'user')
       const todo = new Todo({
         title,
         description,
         status,
+        userId:userid
       });
       await todo.save();
       res.status(200).json({ status: 200, message: "Todo created successfully", todo });
@@ -24,11 +28,15 @@ class BaseController {
 
   getTodos = async (req, res) => {
     try {
-      const { page = 1, limit = 10 } = req.query;
-      const todos = await Todo.find()
+      const { page = 1, limit = 10 ,userId } = req.query;
+      // const userId = req.user.userId;
+      // const userId =req.params.id
+      console.log(userId,'sss');
+
+      const todos = await Todo.find({userId})
         .skip((page - 1) * limit)
         .limit(Number(limit));
-      const totalTodos = await Todo.countDocuments();
+      const totalTodos = todos.length;
 
       res.status(200).json({
         message: "Todos retrieved successfully",

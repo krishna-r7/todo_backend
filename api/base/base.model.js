@@ -10,6 +10,11 @@ const todoSchema  = new mongoose.Schema(
       enum: ["Pending", "In-Progress", "Completed"],
       default: "Pending",
     },
+    userId: 
+      {
+       type: mongoose.Schema.Types.ObjectId, ref: "User"
+      },
+    
   },
   { timestamps: true }
 );
